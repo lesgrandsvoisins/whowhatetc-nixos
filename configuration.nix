@@ -26,6 +26,7 @@ in
       ./imports/users.nix
       ./imports/packages.nix
       ./imports/services.nix
+      ./derivations/default.nix
     ];
 
   # Bootloader.
