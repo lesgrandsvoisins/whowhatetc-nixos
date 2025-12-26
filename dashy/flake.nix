@@ -1,17 +1,15 @@
 {
-  description = "Dashy dashboard packaged with buildNpmPackage";
+  description = "Dashy dashboard packaged with buildNpmPackage (lambda style)";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.05";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.11";
     flake-utils.url = "github:numtide/flake-utils";
   };
 
   outputs = { self, nixpkgs, flake-utils, ... }:
     flake-utils.lib.eachDefaultSystem (system:
       let
-        pkgs = import nixpkgs {
-          inherit system;
-        };
+        pkgs = import nixpkgs { inherit system; };
       in
       {
         packages.default = pkgs.buildNpmPackage (finalAttrs: {
@@ -21,17 +19,24 @@
           src = pkgs.fetchFromGitHub {
             owner = "Lissy93";
             repo = "dashy";
-            tag = "v${finalAttrs.version}";
-            # First build will fail and print `got:` — paste that here
-            hash = ""; 
+            tag = "${finalAttrs.version}";
+            hash = "sha256-ci4YlxFNp+JD5EzYfhtM9jKy5fl+a48vp9QzZHh5NRg=";
           };
 
-          # Nix prints this during second build — paste the value here
-          npmDepsHash = "";
+          # Second build will fail -> paste 'got:' here
+          npmDepsHash = "sha256-3Fab/pfAQd0O10U7FQjfJP79zIR3ubn+CfEY/ujxFMc=";
 
-          # dashy has engine requirements, so bypass them
-          npmPackFlags = [ "--ignore-engines" ];
-          NODE_OPTIONS = "--ignore-engines";
+          # Dashy has engine checks we want to ignore
+          npmPackFlags = [ "--legacy-peer-deps" "--ignore-engines" ];
+          # NODE_OPTIONS = "";
+          npmFlags = [ "--legacy-peer-deps" "--ignore-engines"];
+          makeCacheWritable = true;
+
+          # Inject your local package-lock.json
+          postPatch = ''
+            echo "Copying vendored package-lock.json..."
+            cp ${./package-lock.json} package-lock.json
+          '';
 
           meta = {
             description = "Dashy, a modernish dashboard";
@@ -40,7 +45,7 @@
           };
         });
 
-        # allows `nix develop` → run / modify dashy
+        # Optional: dev shell
         devShells.default = pkgs.mkShell {
           buildInputs = [
             pkgs.nodejs

@@ -1,11 +1,10 @@
 {
   lib,
   buildNpmPackage,
-  fetchFromGitHub,
-  ...
+  fetchFromGitHub
 }:
 
-buildNpmPackage (finalAttrs: {
+pkgs.buildNpmPackage (finalAttrs: {
   pname = "dashy";
   version = "3.1.1";
 
