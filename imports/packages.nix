@@ -48,7 +48,7 @@ in
     openldap
     openssl
     pwgen
-    python3Full
+    python3
     tmux
     uv
     wget
