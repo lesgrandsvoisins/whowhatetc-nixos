@@ -55,6 +55,6 @@ in
     xcaddy 
     zlib
     yarn
-    yan2nix
+    yarn2nix
   ];
 }
