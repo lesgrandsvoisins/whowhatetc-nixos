@@ -3,6 +3,9 @@ let
 in
 {
   # Enable the OpenSSH daemon.
+  imports = [
+    ./services/caddy.nix
+  ];
   services = {
     openssh.enable = true;
 #     acme-dns = {

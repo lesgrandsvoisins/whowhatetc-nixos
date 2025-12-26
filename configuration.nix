@@ -20,11 +20,11 @@ in
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
-      ./includes/networking.nix
-      ./includes/security.nix
-      ./includes/users.nix
-      ./includes/packages.nix
-      ./includes/services.nix
+      ./imports/networking.nix
+      ./imports/security.nix
+      ./imports/users.nix
+      ./imports/packages.nix
+      ./imports/services.nix
     ];
 
   # Bootloader.
@@ -53,19 +53,6 @@ in
 
   # Configure console keymap
   console.keyMap = "fr";
-
-
-
-  # Some programs need SUID wrappers, can be configured further or are
-  # started in user sessions.
-  # programs.mtr.enable = true;
-  # programs.gnupg.agent = {
-  #   enable = true;
-  #   enableSSHSupport = true;
-  # };
-
-  # List services that you want to enable:
-
 
 
 

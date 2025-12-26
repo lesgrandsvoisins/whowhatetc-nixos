@@ -13,7 +13,6 @@ let
   external-netmask6 = "64";
 in
 {
-
   networking = {
     hostName = "whowhatetc"; # Define your hostname.
     usePredictableInterfaceNames = false;
