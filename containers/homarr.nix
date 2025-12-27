@@ -8,11 +8,12 @@ in
     };
     autoStart = true;
     config = { config, pkgs, lib, ... }: {
+      nix.settings.experimental-features = "nix-command flakes";
       imports = [
         ../imports/packages/vim.nix
         ../imports/packages/common.nix
       ];
-      
+
       system.stateVersion = "25.11";
     };
   };
