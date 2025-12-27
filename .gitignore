@@ -6,3 +6,5 @@ result-*
 .direnv
 
 node_modules
+work
+dist

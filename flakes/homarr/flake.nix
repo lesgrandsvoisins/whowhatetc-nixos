@@ -57,17 +57,20 @@
 
           # '';
 
-          pnpmInstallFlags = [ "--shamefully-hoist" ];
+          # pnpmInstallFlags = [ "--shamefully-hoist" ];
 
 
           installPhase = ''
             # Install built app to $out
-            mkdir -p $out/src
-            mkdir -p $out/node_modules
-            mkdir -p $out/etc/homarr
-            cp -r . $out/src/
-            mv $out/src/node_modules/ $out/node_modules/
-            cp $out/src/.env.example $out/etc/homarr/homarr.env
+            mkdir -p $out
+            cp -r . $out
+            pnpm -C $out install
+            pnpm -C $out approve-builds -g
+            cp ./.env $out/.env'
+            echo "DB_URL='$out/homarr.sqlite'" >> $out/.env
+            pnpm run db:migration:sqlite:run
+            mkdir -p $out/build
+            cp $out/node_modules/better-sqlite3/build/Release/better_sqlite3.node $out/build/better_sqlite3.node
           '';
 
           meta = {
