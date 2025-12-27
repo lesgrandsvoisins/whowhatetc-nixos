@@ -11,4 +11,4 @@ install:
 	mkdir ./homarr/build
 	cp ./homarr/node_modules/better-sqlite3/build/Release/better_sqlite3.node ./homarr/build/better_sqlite3.node
 	# redis-server
-	pnpm start
+	pnpm -C ./homarr start
