@@ -34,13 +34,13 @@ in
     ffmpeg
     go 
     lego
-    nodejs
-    nodenv
+    # nodejs
+    # nodenv
     oauth2-proxy
     xcaddy 
     zlib
-    yarn
-    yarn2nix
+    # yarn
+    # yarn2nix
     gcc
   ];
 }
