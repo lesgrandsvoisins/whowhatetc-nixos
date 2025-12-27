@@ -10,8 +10,8 @@ in
     config = { config, pkgs, lib, ... }: {
       nix.settings.experimental-features = "nix-command flakes";
       imports = [
-        ../imports/packages/vim.nix
-        ../imports/packages/common.nix
+        ../modules/packages/vim.nix
+        ../modules/packages/common.nix
       ];
       services.redis.servers.homarr.enable = true;
 

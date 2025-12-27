@@ -12,7 +12,7 @@ then
   sudo cp ./.env.example $folder$file
   sudo chmod ug+w $folder$file
   sudo chown $user $folder$file
-  sed -i 's|FULL_PATH_TO_YOUR_SQLITE_DB_FILE|/etc/homarr/homarr.sqlite3|' $folder$file
+  sed -i 's|FULL_PATH_TO_YOUR_SQLITE_DB_FILE|/car/lib/homarr/homarr.sqlite3|' $folder$file
   RAND=`openssl rand -hex 32`
   sed -i "s|0000000000000000000000000000000000000000000000000000000000000000|$RAND|" $folder$file
   RAND=`openssl rand -hex 32`

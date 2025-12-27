@@ -24,12 +24,12 @@ in
   imports =
     [ 
       ./hardware-configuration.nix
-      ./imports/networking.nix
-      ./imports/security.nix
-      ./imports/users.nix
-      ./imports/home.nix
-      ./imports/packages.nix
-      ./imports/services.nix
+      ./modules/networking.nix
+      ./modules/security.nix
+      ./modules/users.nix
+      ./modules/home.nix
+      ./modules/packages.nix
+      ./modules/services.nix
       ./containers/homarr.nix
     ];
 

@@ -8,6 +8,7 @@ in
   ];
   services = {
     openssh.enable = true;
+    redis.servers.homarr.enable = true;
 #     acme-dns = {
 #       enable = true;
 #       settings = {
