@@ -4,11 +4,15 @@
   outputs = {
     self,
     nixpkgs,
-  }: {
+  }: let
+    # vars = import ../../vars.nix;
+  in {
     nixosConfigurations.container = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       modules = [
-        ({pkgs, ...}: {
+        ({pkgs, ...}: let
+          vars = import ../../vars.nix;
+        in {
           boot.isContainer = true;
 
           networking.firewall.allowedTCPPorts = [80 443];
@@ -23,15 +27,15 @@
           users.groups.caddy.gid = vars.gid.caddy;
           nix.settings.experimental-features = ["nix-command flakes"];
           imports = [
-            ../modules/packages/vim.nix
-            ../modules/packages/common.nix
-            (import ../overlays.nix {inputs = {nixpkgs-unstable = pkgs.unstable;};})
+            ../../modules/packages/vim.nix
+            ../../modules/packages/common.nix
+            # (import ../overlays.nix {inputs = {nixpkgs-unstable = pkgs.unstable;};})
           ];
           environment.systemPackages = [
             # homarr
-            pkgs.unstable.nodejs_25
-            (pkgs.unstable.pnpm_10.override {nodejs = pkgs.unstable.nodejs_25;})
-            pkgs.unstable.pnpmConfigHook
+            pkgs.nodejs_25
+            (pkgs.pnpm_10.override {nodejs = pkgs.nodejs_25;})
+            pkgs.pnpmConfigHook
             # homarr
           ];
 

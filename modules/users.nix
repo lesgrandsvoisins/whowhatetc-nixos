@@ -17,7 +17,7 @@ in {
     description = "mannchri";
     extraGroups = ["networkmanager" "wheel" "acme" "caddy"];
     packages = with pkgs; [];
-    uid = 1001;
+    uid = vars.uid.mannchri;
   };
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
@@ -31,16 +31,16 @@ in {
       pnpmConfigHook
       # fetchPnpmDeps
     ];
-    uid = 1002;
+    uid = vars.uid.homarr;
   };
 
   users.users.caddy = {
-    uid = 239;
+    uid = vars.uid.caddy;
     group = "caddy";
     isSystemUser = true;
   };
-  users.groups.caddy.gid = 239;
-  users.groups.users.gid = 100;
+  users.groups.caddy.gid = vars.gid.caddy;
+  users.groups.users.gid = vars.gid.users;
 
   # home-manager.users.homarr = {
   #   /* The home.stateVersion option does not have a default and must be set */
