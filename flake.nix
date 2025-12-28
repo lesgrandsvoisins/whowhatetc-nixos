@@ -4,6 +4,7 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.11";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixpkgs-unstable";
     caddy-ui-whowhatetc.url = "path:./flakes/caddy-ui";
+    homarr.url = "path:./flakes/homarr";
     agenix.url = "github:ryantm/agenix";
     flake-utils.url = "github:numtide/flake-utils";
     home-manager = {
@@ -20,6 +21,7 @@
     home-manager,
     agenix, 
     caddy-ui-whowhatetc, 
+    homarr,
     ... 
     }@inputs: 
     # flake-utils.lib.eachDefaultSystem (system:

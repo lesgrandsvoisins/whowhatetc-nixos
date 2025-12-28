@@ -9,7 +9,8 @@
         system = prev.stdenv.hostPlatform.system;
         config.allowUnfree = true; # Also allow unfree packages from unstable
       };
-      homarr = prev.callPackage derivations/homarr/package.nix {};
+      # homarr = prev.callPackage derivations/homarr/package.nix {};
+      homarr = import inputs.homarr {};
     })
   ];
 }
