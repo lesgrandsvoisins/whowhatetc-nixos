@@ -31,6 +31,7 @@
             pkgs.nodejs_25
             (pkgs.pnpm_10.override {nodejs = pkgs.nodejs_25;})
             pkgs.pnpmConfigHook
+            homarr
           ];
 
           system.stateVersion = "25.11";
