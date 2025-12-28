@@ -18,6 +18,7 @@
           boot.isContainer = true;
 
           # networking.firewall.allowedTCPPorts = [80 443];
+          networking.hostname = "homarr";
 
           nix.settings.experimental-features = ["nix-command flakes"];
           imports = [
