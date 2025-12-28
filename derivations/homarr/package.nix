@@ -1,9 +1,9 @@
 {
-  pkgs ? import <nixpkgs-unstable> {},
+  pkgs ? import <nixpkgs> {},
   fetchFromGitHub ? pkgs.fetchFromGitHub,
   nodePackages ? pkgs.nodePackages,
   makeWrapper ? pkgs.makeWrapper,
-  nodejs ? pkgs.nodejs_24,
+  nodejs ? pkgs.nodejs_25,
   pnpm_10 ? pkgs.pnpm_10.override {nodejs = nodejs;},
   fetchPnpmDeps ? pkgs.fetchPnpmDeps,
   pnpmConfigHook ? pkgs.pnpmConfigHook,
