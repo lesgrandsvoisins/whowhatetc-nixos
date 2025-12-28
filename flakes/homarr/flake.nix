@@ -6,25 +6,22 @@
     flake-utils.url = "github:numtide/flake-utils";
   };
 
-  outputs =
-    {
-      self,
-      nixpkgs,
-      flake-utils,
-      ...
-    }:
+  outputs = {
+    self,
+    nixpkgs,
+    flake-utils,
+    ...
+  }:
     flake-utils.lib.eachDefaultSystem (
-      system:
-      let
-        pkgs = import nixpkgs { inherit system; };
+      system: let
+        pkgs = import nixpkgs {inherit system;};
         nodejs = pkgs.nodejs_25;
-        pnpm = pkgs.pnpm_10.override { nodejs = nodejs; };
+        pnpm = pkgs.pnpm_10.override {nodejs = nodejs;};
         fetchPnpmDeps = pkgs.fetchPnpmDeps;
         stdenv = pkgs.stdenv;
         pnpmConfigHook = pkgs.pnpmConfigHook;
         homarrAssets = ./assets;
-      in
-      {
+      in {
         packages.default = stdenv.mkDerivation (finalAttrs: {
           pname = "homarr";
           version = "1.48.0";
@@ -33,16 +30,16 @@
             owner = "homarr-labs";
             repo = "homarr";
             tag = "v${finalAttrs.version}";
-            hash = "sha256-iWdaQv+aTPB+4uDCgkoLMq7tVfCFN8kv+acRo9Oby5g="; 
+            hash = "sha256-iWdaQv+aTPB+4uDCgkoLMq7tVfCFN8kv+acRo9Oby5g=";
           };
 
-            pnpmDeps = fetchPnpmDeps {
-              inherit (finalAttrs) pname version src;
-              pnpm = pnpm;
-              nodejs = nodejs;
-              fetcherVersion = 3;
-              hash = "sha256-GVjNQ3uS4K5AhWbJFlghHiaHjReaQjdOJJxfFLehLlM=";
-            };
+          pnpmDeps = fetchPnpmDeps {
+            inherit (finalAttrs) pname version src;
+            pnpm = pnpm;
+            nodejs = nodejs;
+            fetcherVersion = 3;
+            hash = "sha256-GVjNQ3uS4K5AhWbJFlghHiaHjReaQjdOJJxfFLehLlM=";
+          };
 
           nativeBuildInputs = [
             pnpm
@@ -86,7 +83,7 @@
             substituteInPlace package.json \
               --replace-warn  'dotenv -e .env --' \
                               'dotenv -e /etc/homarr/homarr.env --'
-                
+
           '';
 
           buildPhase = ''
@@ -115,20 +112,18 @@
 
             runHook postInstall
 
-            '';
+          '';
 
-            # doDist = false;
+          # doDist = false;
 
-            meta = {
-              description = "Homarr Dashboard";
-              changelog = "https://github.com/homarr-labs/homarr/releases/tag/v${finalAttrs.version}";
-              mainProgram = "homarr";
-              homepage = "https://homarr.dev";
-              # platforms = lib.platforms.all;
-            };
-
-          });
-
+          meta = {
+            description = "Homarr Dashboard";
+            changelog = "https://github.com/homarr-labs/homarr/releases/tag/v${finalAttrs.version}";
+            mainProgram = "homarr";
+            homepage = "https://homarr.dev";
+            # platforms = lib.platforms.all;
+          };
+        });
 
         devShells.default = pkgs.mkShell {
           buildInputs = [

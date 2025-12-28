@@ -1,8 +1,6 @@
 # overlays.nix
 # This module defines an overlay to add packages from nixpkgs-unstable.
-{ inputs, ... }:
-
-{
+{inputs, ...}: {
   nixpkgs.overlays = [
     (final: prev: {
       unstable = import inputs.nixpkgs-unstable {
@@ -10,7 +8,9 @@
         config.allowUnfree = true; # Also allow unfree packages from unstable
       };
       # homarr = prev.callPackage derivations/homarr/package.nix {};
-      # homarr = import inputs.homarr {};
+      homarr = import inputs.homarr {
+        system = prev.stdenv.hostPlatform.system;
+      };
     })
   ];
 }
