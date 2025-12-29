@@ -5,13 +5,14 @@ in {
       enable = true;
       wantedBy = ["default.target"];
       description = "Système de tableaux de bords Homarr";
+      script = "/home/homarr/homarr/start.sh";
+      environment = "/etc/homarr/homarr.env";
       serviceConfig = {
-        WorkingDirectory = "/home/homarr/homarr/";
+        WorkingDirectory = "/home/homarr/homarr";
         User = "homarr";
         Group = "users";
         Restart = "always";
-        Type = "simple";
-        ExecStart = "/run/current-system/sw/bin/pnpm start";
+        # Type = "simple";
       };
     };
   };
