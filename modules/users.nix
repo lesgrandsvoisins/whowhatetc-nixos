@@ -20,6 +20,14 @@ in {
     uid = vars.uid.mannchri;
   };
 
+  users.users.mael = {
+    isNormalUser = true;
+    description = "mael";
+    extraGroups = ["acme" "caddy"];
+    packages = with pkgs; [];
+    uid = vars.uid.mael;
+  };
+
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.homarr = {
     isNormalUser = true;
