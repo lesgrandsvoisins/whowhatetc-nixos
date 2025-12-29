@@ -6,19 +6,21 @@
     nixpkgs,
   }: let
     # vars = import ../../vars.nix;
+    # homarr = pkgs.callPackage ../../derivations/homarr/package.nix {};
   in {
     nixosConfigurations.container = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
 
       modules = [
         ({pkgs, ...}: let
-          vars = import ../../vars.nix;
+          # vars = import ../../vars.nix;
           homarr = pkgs.callPackage ../../derivations/homarr/package.nix {};
         in {
           boot.isContainer = true;
+          boot.isNspawnContainer=true;
 
           # networking.firewall.allowedTCPPorts = [80 443];
-          networking.hostname = "homarr";
+          # networking.hostname = "homarr";
 
           nix.settings.experimental-features = ["nix-command flakes"];
           imports = [

@@ -1,4 +1,6 @@
-{
+{pkgs, ...}: let
+  vars = import ../../vars.nix;
+in {
   users.users.homarr = {
     isNormalUser = true;
     uid = vars.uid.homarr;
