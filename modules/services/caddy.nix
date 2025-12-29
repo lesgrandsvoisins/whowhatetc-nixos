@@ -109,6 +109,16 @@ in {
           reverse_proxy http://localhost:3000
         '';
       };
+      "maelanc.whowhatetc.com" = {
+        extraConfig = ''
+          reverse_proxy http://localhost:8090
+        '';
+      };
+      "maelanc.quiquoietc.com" = {
+        extraConfig = ''
+          reverse_proxy http://localhost:8090
+        '';
+      };
       "homarr.whowhatetc.com" = {
         extraConfig = ''
           reverse_proxy http://localhost:3000
