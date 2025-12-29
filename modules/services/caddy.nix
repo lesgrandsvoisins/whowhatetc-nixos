@@ -88,6 +88,16 @@ in {
           redir https://homarr.whowhatetc.com
         '';
       };
+      "www.quiquoietc.com" = {
+        extraConfig = ''
+          redir https://homarr.whowhatetc.com
+        '';
+      };
+      "quiquoietc.com" = {
+        extraConfig = ''
+          redir https://homarr.whowhatetc.com
+        '';
+      };
       "auth.whowhatetc.com" = {
         extraConfig = ''
           authenticate with keygdvoisinscom
