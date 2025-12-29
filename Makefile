@@ -7,3 +7,6 @@ switch-flake:
 flake-check:
 	nix flake check
 
+take-out-the-old-garbage:
+	nix-collect-garbage --delete-older-than 7d
+	nix-store --gc
