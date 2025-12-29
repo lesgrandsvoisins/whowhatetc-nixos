@@ -14,7 +14,7 @@
       modules = [
         ({pkgs, ...}: let
           # vars = import ../../vars.nix;
-          homarr = pkgs.callPackage ../../derivations/homarr/package.nix {};
+          $ homarr = pkgs.callPackage ../../derivations/homarr/package.nix {};
         in {
           boot.isContainer = true;
           boot.isNspawnContainer=true;
@@ -34,7 +34,7 @@
             pkgs.nodejs_25
             (pkgs.pnpm_10.override {nodejs = pkgs.nodejs_25;})
             pkgs.pnpmConfigHook
-            homarr
+            # homarr
           ];
 
           system.stateVersion = "25.11";
