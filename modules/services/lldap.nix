@@ -16,7 +16,7 @@ in {
       force_ldap_user_pass_reset = "always";
       http_host = "0.0.0.0";
       http_port = 17170;
-      http_url = "http://localhost";
+      http_url = "http://0.0.0.0:17170";
       jwt_secret_file = null;
       ldap_base_dn = "dc=whowhatetc,dc=com";
       ldap_host = "0.0.0.0";

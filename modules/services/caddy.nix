@@ -126,7 +126,7 @@ in {
       };
       "lldap.whowhatetc.com" = {
         extraConfig = ''
-          reverse_proxy http://localhost:3890
+          reverse_proxy http://0.0.0.0:17170
         '';
       };
       "dashy.whowhatetc.com" = {

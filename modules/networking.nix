@@ -1,5 +1,8 @@
-{ config, pkgs, ... }:
-let
+{
+  config,
+  pkgs,
+  ...
+}: let
   external-mac = "90:1b:0e:9e:ec:37";
   ext-if = "enx901b0e9eec37";
   external-ip = "213.239.216.138";
@@ -11,8 +14,10 @@ let
   external-ip6 = "2a01:4f8:a0:73ba::";
   external-gw6 = "fe80::1";
   external-netmask6 = "64";
-in
-{
+in {
+  imports = [
+    ./networking/firewall.nix
+  ];
   networking = {
     hostName = "whowhatetc"; # Define your hostname.
     usePredictableInterfaceNames = false;
@@ -45,7 +50,7 @@ in
     #    ipv4.addresses = [
     #    {
     #      address = external-ip;
-    #      prefixLength = external-netmask; 
+    #      prefixLength = external-netmask;
     #     }
     #    ];
     #    ipv6.addresses = [{
@@ -63,8 +68,5 @@ in
     # firewall.allowedTCPPorts = [ ... ];
     # firewall.allowedUDPPorts = [ ... ];
     # Or disable the firewall altogether.
-    firewall.enable = true;
-    firewall.allowedTCPPorts = [22 25 53 80 443];
-    firewall.allowedUDPPorts = [53];
   };
 }
