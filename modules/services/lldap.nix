@@ -20,6 +20,7 @@ in {
         server = "mail.lesgrandsvoisins.com";
         enable_password_reset = true;
         port = 587;
+        from = "List des rands Voisins <list@lesgrandsvoisins.com>";
       };
       ldaps_options = {
         enabled = true;
