@@ -17,14 +17,28 @@
 in {
   networking.firewall = {
     enable = true;
-    allowedTCPPorts = [22 25 53 80 443 636];
+    allowedTCPPorts = [22 25 53 80 443 3636];
     allowedUDPPorts = [53];
-    filterForward = true;
+    # filterForward = true;
     # extraCommands = ''
     #   nftables -t nat -A POSTROUTING --sport 636 -p tcp -m tcp --dport 3636 -j MASQUERADE";
     # '';
   };
   networking.nftables = {
     enable = true;
+    #   "natlldap" = {
+    #     enable = true;
+    #     family = "inet";
+    #     content = ''
+    #       chain prerouting {{
+    #         type nat hook prerouting priority -100; policy accept;
+    #         ip daddr 10.1.1.1 tcp dport { 8888 } dnat to 10.2.2.2:9999
+    #       }
+    #       chain postrouting {
+    #         type nat hook postrouting priority 100; policy accept;
+    #         masquerade
+    #       }
+    #     '';
+    #   };
   };
 }
