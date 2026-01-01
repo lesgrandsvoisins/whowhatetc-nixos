@@ -17,7 +17,7 @@
 in {
   networking.firewall = {
     enable = true;
-    allowedTCPPorts = [22 25 53 80 443 587 3636];
+    allowedTCPPorts = [22 25 53 80 389 443 587 636 3636];
     allowedUDPPorts = [53];
     # filterForward = true;
     # extraCommands = ''
