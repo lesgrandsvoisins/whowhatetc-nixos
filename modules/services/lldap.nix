@@ -15,7 +15,7 @@ in {
     settings = {
       database_url = "sqlite://./users.db?mode=rwc"; # Exemple "postgres://postgres-user:password@postgres-server/my-database"
       smtp_options = {
-        smtp_encryption = "tls";
+        smtp_encryption = "TLS";
         user = "list@lesgrandsvoisins.com";
         enable_password_reset = true;
       };
