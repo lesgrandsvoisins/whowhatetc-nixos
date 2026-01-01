@@ -25,6 +25,7 @@ in {
     # '';
   };
   networking.nat = {
+    enable = true;
     externalIPv6 = external-ip6;
     externalIP = external-ip;
     enableIPv6 = true;
