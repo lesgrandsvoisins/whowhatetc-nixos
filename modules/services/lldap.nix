@@ -23,8 +23,8 @@ in {
       ldaps_options = {
         enabled = true;
         port = 3636;
-        cert_file = "/var/lib/caddy/ssl/cert.pem";
-        key_file = "/var/lib/caddy/ssl/key.pem";
+        cert_file = "/var/lib/acme/lldap.whowhatetc.com/fullchain.pem";
+        key_file = "/var/lib/acme/lldap.whowhatetc.com/key.pem";
       };
       force_ldap_user_pass_reset = "always";
       http_host = "0.0.0.0";
