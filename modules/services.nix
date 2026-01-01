@@ -1,9 +1,12 @@
-{ config, pkgs, ... }:
-let
-in
 {
+  config,
+  pkgs,
+  ...
+}: let
+in {
   # Enable the OpenSSH daemon.
   imports = [
+    ./services/lldap.nix
     ./services/caddy.nix
   ];
   services = {
@@ -12,20 +15,20 @@ in
       enable = true;
       port = 6379;
     };
-#     acme-dns = {
-#       enable = true;
-#       settings = {
-#         
-#       };
-#     };
-#     nginx = {
-#       enable = true;
-#       virtualHosts = {
-#         "hetzner007.gdvoisins.com" = {
-#           forceSSL = true;
-#           enableACME = true;
-#         };
-#       };
-#     };
+    #     acme-dns = {
+    #       enable = true;
+    #       settings = {
+    #
+    #       };
+    #     };
+    #     nginx = {
+    #       enable = true;
+    #       virtualHosts = {
+    #         "hetzner007.gdvoisins.com" = {
+    #           forceSSL = true;
+    #           enableACME = true;
+    #         };
+    #       };
+    #     };
   };
 }

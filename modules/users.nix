@@ -15,7 +15,7 @@ in {
   users.users.mannchri = {
     isNormalUser = true;
     description = "mannchri";
-    extraGroups = ["networkmanager" "wheel" "acme" "caddy"];
+    extraGroups = ["networkmanager" "wheel" "acme" "caddy" "services"];
     packages = with pkgs; [];
     uid = vars.uid.mannchri;
   };
@@ -32,7 +32,7 @@ in {
   users.users.homarr = {
     isNormalUser = true;
     description = "homarr";
-    extraGroups = ["caddy"];
+    extraGroups = ["caddy" "services"];
     packages = with pkgs.unstable; [
       nodejs_25
       (pnpm_10.override {nodejs = nodejs_25;})
@@ -47,7 +47,13 @@ in {
     group = "caddy";
     isSystemUser = true;
   };
+  users.users.lldap = {
+    uid = vars.uid.lldap;
+    group = "services";
+    isSystemUser = true;
+  };
   users.groups.caddy.gid = vars.gid.caddy;
+  users.groups.services.gid = vars.gid.services;
   users.groups.users.gid = vars.gid.users;
 
   # home-manager.users.homarr = {

@@ -124,6 +124,11 @@ in {
           reverse_proxy http://localhost:3000
         '';
       };
+      "lldap.whowhatetc.com" = {
+        extraConfig = ''
+          reverse_proxy http://localhost:3890
+        '';
+      };
       "dashy.whowhatetc.com" = {
         extraConfig = ''
           authorize with identifiedpolicy
