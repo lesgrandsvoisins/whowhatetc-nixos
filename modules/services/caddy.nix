@@ -89,6 +89,11 @@ in {
           redir https://homarr.whowhatetc.com
         '';
       };
+      "a11yproject.lgv.info" = {
+        extraConfig = ''
+          root /var/www/a11yproject.lgv.info
+        '';
+      };
       "whowhatetc.com" = {
         extraConfig = ''
           redir https://homarr.whowhatetc.com
